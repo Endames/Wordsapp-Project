@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block content %}
+<main>
+    
+    {% for word in wordlist: %}
+        <a href = "/Response/{{word}}"><button type ="button" class="wordbox" onclick= "Response(word)" data-toggle="modal" data-target="#myModal" name="myModal" >{{ word }}</button> </a>  
+        <!-- <div class="modal-body">  -->
+        <!-- <button type ="button" class="wordbox" onclick= "proxy(word)" data-toggle="modal" data-target="#myModal" name="myModal" >{{ word }}</button>   -->
+            
+
+           
+            </div>
+    {% endfor %}
+    <script>
+        $('#myModal').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var recipient = button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-title').text('New message to ' + recipient)
+  modal.find('.modal-body input').val(recipient)
+})
+    </script>
+<!-- 
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+        
+    </button> -->
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title" id="myModalLabel"> {{ word }}</h4>
+      </div>
+      <div class="modal-body">
+
+           {{defin}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+       </div>
+    </div>
+  </div>
+</div>
+</div>
+<script src ="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script src = "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+</main>
+{% endblock %}
+
